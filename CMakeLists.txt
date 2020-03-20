@@ -29,13 +29,13 @@ set(DEVICE_FAMILY STM32F40_41xxx)
 set(HSE_VALUE 8000000)
 
 # Used linker file (just for testing)
-get_filename_component(LINKER_SCRIPT linker/stm32f407vgt.ld ABSOLUTE)
+get_filename_component(LINKER_SCRIPT linker/STM32F401RETx_FLASH.ld ABSOLUTE)
 
 # Use LTO? WARNING: This might break the code
 #set(ADDITIONAL_CORE_FLAGS -flto)
 
 # OpenOCD config file
-get_filename_component(OPENOCD_CONFIG tools/stm32f4discovery.cfg ABSOLUTE)
+get_filename_component(OPENOCD_CONFIG tools/st_nucleo_f4.cfg ABSOLUTE)
 
 # add libraries
 add_subdirectory(lib)

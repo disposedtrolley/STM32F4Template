@@ -1,16 +1,15 @@
 # add the sources here
 set(sources
-    main.cpp
-    system_stm32f4xx.c
-    startup_stm32f40_41xxx.s
-)
+        main.cpp
+        system_stm32f4xx.c
+        )
 
 # GCC optimization level: use -O0 in debug build, otherwise -O2
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-  set(opt_level -O0)
-else()
-  set(opt_level -Os)
-endif()
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    set(opt_level -O0)
+else ()
+    set(opt_level -Os)
+endif ()
 
 # set some project constants
 set(elf_file ${application_name}.elf)
@@ -50,5 +49,5 @@ add_custom_target(${application_name} ALL DEPENDS ${elf_file}-size ${bin_file} $
 
 # OpenOCD targets
 add_custom_target(flash DEPENDS ${elf_file} COMMAND ${OPENOCD_EXECUTABLE}
-  -f ${OPENOCD_CONFIG}
-  --command "program ${elf_file} reset exit")
+        -f ${OPENOCD_CONFIG}
+        --command "program ${elf_file} reset exit")
